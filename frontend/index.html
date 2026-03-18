@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowSync AI - Traffic Control Center</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Azure Maps Web SDK -->
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/3/atlas.min.css" type="text/css" />
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/3/atlas.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Bengaluru Traffic Control Center</h1>
+        <p class="tagline">"Predicting and preventing traffic before it happens."</p>
+    </header>
+
+    <main>
+        <!-- SECTION 1: DASHBOARD -->
+        <section id="dashboard" class="section-container">
+            <h2>Traffic Dashboard</h2>
+            <div class="cards-container">
+                <div class="card" id="card-A">
+                    <h3>Junction A</h3>
+                    <div class="card-detail"><span>Vehicles:</span> <span class="v-count bold">--</span></div>
+                    <div class="card-detail"><span>Current:</span> <span class="t-current tag">--</span></div>
+                    <div class="card-detail"><span>Predicted:</span> <span class="t-predict tag">--</span></div>
+                </div>
+                <div class="card" id="card-B">
+                    <h3>Junction B</h3>
+                    <div class="card-detail"><span>Vehicles:</span> <span class="v-count bold">--</span></div>
+                    <div class="card-detail"><span>Current:</span> <span class="t-current tag">--</span></div>
+                    <div class="card-detail"><span>Predicted:</span> <span class="t-predict tag">--</span></div>
+                </div>
+                <div class="card" id="card-C">
+                    <h3>Junction C</h3>
+                    <div class="card-detail"><span>Vehicles:</span> <span class="v-count bold">--</span></div>
+                    <div class="card-detail"><span>Current:</span> <span class="t-current tag">--</span></div>
+                    <div class="card-detail"><span>Predicted:</span> <span class="t-predict tag">--</span></div>
+                </div>
+            </div>
+            <div class="action-bar">
+                <button id="btn-predict" onclick="runPrediction()">Run Prediction</button>
+            </div>
+        </section>
+
+        <!-- SECTION 2: SIMULATION -->
+        <section id="simulation" class="section-container">
+            <h2>Signal Coordination Simulation</h2>
+            <div class="road-container">
+                <!-- Junction A -->
+                <div class="junction-sim" id="sim-A">
+                    <div class="signal-circle"></div>
+                    <div class="sim-label">A</div>
+                    <div class="sim-count">Count: <span>0</span></div>
+                </div>
+                
+                <div class="road-line"></div>
+                
+                <!-- Junction B -->
+                <div class="junction-sim" id="sim-B">
+                    <div class="signal-circle"></div>
+                    <div class="sim-label">B</div>
+                    <div class="sim-count">Count: <span>0</span></div>
+                </div>
+                
+                <div class="road-line"></div>
+                
+                <!-- Junction C -->
+                <div class="junction-sim" id="sim-C">
+                    <div class="signal-circle"></div>
+                    <div class="sim-label">C</div>
+                    <div class="sim-count">Count: <span>0</span></div>
+                </div>
+            </div>
+            <div class="action-bar">
+                <button id="btn-optimize" onclick="optimizeSignals()">Optimize Signals</button>
+            </div>
+        </section>
+
+        <!-- SECTION 3: MAP -->
+        <section id="azure-map-section" class="section-container">
+            <h2>Congestion Map</h2>
+            <div id="map"></div>
+            <div class="map-instruction">
+                <strong>Azure Maps Setup Required:</strong> To view the map, go to the Azure Portal, create an "Azure Maps resource", copy the Primary Key, and replace `YOUR_AZURE_MAPS_KEY_HERE` inside `map.js`.
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Global object to maintain cross-script data
+        window.trafficState = { data: null };
+    </script>
+    <script src="dashboard.js"></script>
+    <script src="simulation.js"></script>
+    <script src="map.js"></script>
+</body>
+</html>

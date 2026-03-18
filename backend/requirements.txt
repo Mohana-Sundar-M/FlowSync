@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+azure-functions
+nest-asyncio
+pandas
+scikit-learn
+requests
+asyncio
+pickle-mixin
+numpy

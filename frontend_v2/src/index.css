@@ -1,0 +1,461 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg-dark: #09090b;
+  --bg-surface: rgba(24, 24, 27, 0.65);
+  --bg-surface-hover: rgba(39, 39, 42, 0.8);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  
+  --accent-blue: #3b82f6;
+  --accent-glow: rgba(59, 130, 246, 0.5);
+  
+  --status-green: #22c55e;
+  --status-yellow: #eab308;
+  --status-red: #ef4444;
+  
+  --glass-blur: blur(12px);
+  --transition-fast: 0.2s ease-in-out;
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(34, 197, 94, 0.05), transparent 25%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Glassmorphic Panel */
+.glass-panel {
+  background: var(--bg-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-panel:hover {
+  background: var(--bg-surface-hover);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--accent-blue);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 0 15px var(--accent-glow);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
+  background: #2563eb;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Nav */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(9, 9, 11, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-item {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-fast);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.nav-item:hover, .nav-item.active {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Status Indicators */
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-low {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+.status-low .status-dot { background: #4ade80; box-shadow: 0 0 8px #4ade80; }
+
+.status-med {
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+.status-med .status-dot { background: #facc15; box-shadow: 0 0 8px #facc15; }
+
+.status-high {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+.status-high .status-dot { background: #f87171; box-shadow: 0 0 8px #f87171; }
+
+/* Grid Layouts */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header-section {
+  padding: 3rem 2rem 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(var(--pulse-color), 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(var(--pulse-color), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--pulse-color), 0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Azure map container */
+.map-container {
+  width: 100%;
+  height: 450px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+
+/* Traffic signal visualizer */
+.signal-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #18181b;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid #27272a;
+}
+.signal-light {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #27272a;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+  transition: all 0.3s ease;
+}
+.light-red {
+  background: #ef4444;
+  box-shadow: 0 0 20px #ef4444, inset 0 0 5px rgba(0,0,0,0.5);
+}
+.light-green {
+  background: #22c55e;
+  box-shadow: 0 0 20px #22c55e, inset 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+/* Intersection Matrix CSS */
+.intersection-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 100%;
+  position: relative;
+  background: #18181b;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  margin-top: 1rem;
+}
+
+.road {
+  position: absolute;
+  background: #27272a;
+}
+.vertical-road {
+  width: 40px;
+  height: 100%;
+  left: calc(50% - 20px);
+}
+.horizontal-road {
+  height: 40px;
+  width: 100%;
+  top: calc(50% - 20px);
+}
+.road-line {
+  position: absolute;
+  background: transparent;
+}
+.vertical-road .road-line.dashed {
+  width: 2px;
+  height: 100%;
+  left: calc(50% - 1px);
+  border-left: 2px dashed #52525b;
+}
+.horizontal-road .road-line.dashed {
+  height: 2px;
+  width: 100%;
+  top: calc(50% - 1px);
+  border-top: 2px dashed #52525b;
+}
+
+.intersection-center {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: #27272a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.timer-overlay {
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.post-wrapper {
+  position: absolute;
+  z-index: 20;
+}
+.post-wrapper.top { top: calc(50% - 40px); left: calc(50% + 22px); }
+.post-wrapper.bottom { bottom: calc(50% - 40px); left: calc(50% - 32px); }
+.post-wrapper.left { left: calc(50% - 45px); top: calc(50% + 22px); }
+.post-wrapper.right { right: calc(50% - 45px); top: calc(50% - 32px); }
+
+.signal-post {
+  background: #111;
+  padding: 3px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border: 1px solid #333;
+}
+.rotate-90 { transform: rotate(90deg); }
+.rotate-180 { transform: rotate(180deg); }
+.rotate-270 { transform: rotate(270deg); }
+.rotate-0 { transform: rotate(0deg); }
+
+.light {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #333;
+  opacity: 0.3;
+}
+.light.red.on { background: #ef4444; opacity: 1; box-shadow: 0 0 8px #ef4444; }
+.light.yellow.on { background: #eab308; opacity: 1; box-shadow: 0 0 8px #eab308; }
+.light.green.on { background: #22c55e; opacity: 1; box-shadow: 0 0 8px #22c55e; }
+
+/* Pure CSS Car Animations */
+.sim-car {
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  background: #3b82f6;
+  border-radius: 2px;
+  z-index: 5;
+}
+.ns-car-1 {
+  left: calc(50% - 10px);
+  top: -20px;
+  animation: driveDown 3s linear infinite;
+}
+.ns-car-2 {
+  left: calc(50% + 5px);
+  bottom: -20px;
+  animation: driveUp 3.5s linear infinite;
+  animation-delay: 1s;
+}
+.ew-car-1 {
+  top: calc(50% - 10px);
+  left: -20px;
+  width: 14px;
+  height: 8px;
+  animation: driveRight 2.5s linear infinite;
+}
+.ew-car-2 {
+  top: calc(50% + 5px);
+  right: -20px;
+  width: 14px;
+  height: 8px;
+  animation: driveLeft 4s linear infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes driveDown { to { top: 120%; } }
+@keyframes driveUp { to { bottom: 120%; } }
+@keyframes driveRight { to { left: 120%; } }
+@keyframes driveLeft { to { right: 120%; } }
+
+/* V13: Roundabout Geometry */
+.roundabout-container {
+  background: #18181b;
+}
+.roundabout-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 12px solid #27272a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+.roundabout-center {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #09090b;
+  border: 2px solid #3f3f46;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+.entry-road {
+  position: absolute;
+  background: #27272a;
+  z-index: 1;
+}
+.entry-top { width: 30px; height: 50px; top: 0; left: calc(50% - 15px); }
+.entry-bottom { width: 30px; height: 50px; bottom: 0; left: calc(50% - 15px); }
+.entry-left { width: 50px; height: 30px; left: 0; top: calc(50% - 15px); }
+.entry-right { width: 50px; height: 30px; right: 0; top: calc(50% - 15px); }
+
+.roundabout-car-1 {
+  width: 12px;
+  height: 8px;
+  background: #3b82f6;
+  border-radius: 2px;
+  position: absolute;
+  offset-path: path('M 60,0 A 60,60 0 1,1 60,120 A 60,60 0 1,1 60,0');
+  animation: circleDrive 4s linear infinite;
+}
+
+.roundabout-car-2 {
+  width: 12px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 2px;
+  position: absolute;
+  offset-path: path('M 60,0 A 60,60 0 1,1 60,120 A 60,60 0 1,1 60,0');
+  animation: circleDrive 6s linear infinite;
+  animation-delay: 2s;
+}
+
+@keyframes circleDrive {
+  from { offset-distance: 0%; }
+  to { offset-distance: 100%; }
+}

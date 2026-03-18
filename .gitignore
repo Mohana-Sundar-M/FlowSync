@@ -1,0 +1,23 @@
+# Node.js (Frontend)
+frontend_v2/node_modules/
+frontend_v2/dist/
+frontend_v2/.env
+frontend_v2/.env.local
+
+# Python (Backend)
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyd
+backend/*.pyo
+backend/.venv
+backend/venv
+backend/*.pkl
+backend/*.model
+backend/ml/traffic_history.csv
+backend/ml/traffic_model.pkl
+
+# System / IDE
+.DS_Store
+.vscode/
+.idea/
+*.log
